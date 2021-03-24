@@ -1,0 +1,6 @@
+framework module MYL_Jewelry {
+  umbrella header "MYL_Jewelry-umbrella.h"
+
+  export *
+  module * { export * }
+}

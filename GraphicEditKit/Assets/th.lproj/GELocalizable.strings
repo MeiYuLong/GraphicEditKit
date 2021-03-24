@@ -1,0 +1,53 @@
+/* 
+  GELocalizable.strings
+  Pods
+
+  Created by yulong mei on 2021/3/18.
+  
+*/
+"ge.text"="ข้อความ";
+"ge.text_box"="กล่องข้อความ";
+"ge.picture"="รูปภาพ";
+"ge.QR_code"="QR code";
+"ge.Bar_code"="บาร์โค้ด";
+"ge.glyph"="ตัวอักษร";
+"ge.font_size"="ขนาดอักษร";
+"ge.alignment"="จัดตำแหน่ง";
+"ge.indent"="ชิดขอบ";
+"ge.row_spacing"="ระยะห่าง";
+"ge.rotate"="หมุน";
+"ge.delete"="ลบ";
+"ge.scale"="ขยาย";
+"ge.Double_click"="คลิกสองครั้งเพื่อแก้ไขข้อความ";
+"ge.Are_you_sure"="ต้องการยกเลิกใช่หรือไม่";
+"ge.All_photos"="รูปภาพทั้งหมด";
+"ge.edit_picture"="แก้ไขรูปภาพ";
+"ge.Printer_status"="สถานะเครื่องปริ้นท์ผิดปกติ";
+"ge.Print_preview"="ตัวอย่างก่อนพิมพ์";
+"ge.Print_setting"="ตั้งค่าการพิมพ์";
+"ge.Print_density"="คุณภาพการพิมพ์";
+"ge.Print_quantity"="จำนวนการพิมพ์";
+"ge.Print_type"="รูปแบบการพิมพ์";
+"ge.Image_&_Text"="รูปภาพ";
+"ge.light"="ต่ำ";
+"ge.moderate"="ปานกลาง";
+"ge.strong"="สูง";
+"ge.portion"="ฉบับ";
+"ge.length"="ความยาว";
+"ge.print_now"="พิมพ์ทันที";
+"ge.Image-Text_printing"="พิมพ์รูปภาพ&ข้อความ";
+"ge.generated"="ยืนยัน";
+"ge.please_enter_barcode"="กรุณากรอกข้อมูลเพื่อสร้างบาร์โค้ด";
+"ge.please_enter_QRCode"="กรุณากรอกข้อมูลเพื่อสร้าง QR code";
+"ge.Content_cannot_be_empty"="เนื้อหาไม่สามารถเว้นว่างได้";
+"ge.Crop_image"="ครอบตัดภาพ";
+"ge.Please_input_numbers"="กรุณากรอกตัวเลข ตัวอักษรหรือสัญลักษณ์ ไม่เกิน 30 ตัว";
+"ge.Please_enter_100"="กรุณากรอกเนื้อหาไม่เกิน 100 ตัวอักษร";
+"ge.Crop"="ตัด";
+"ge.If_you_input_content"="หากกรอกข้อความที่ยาวเกินไป อาจทำให้ไม่สามารถพิมพ์ได้";
+"ge.connection_successful"="เชื่อมต่อสำเร็จ";
+"ge.Bluetooth_abnormally"="บลูทูธตัดการเชื่อมต่ออย่างผิดปกติ";
+"ge.please_input"="กรุณากรอก";
+"ge.quantity"="จำนวน";
+"ge.sure"="ยืนยัน";
+"ge.cancel"="ยืนยัน";

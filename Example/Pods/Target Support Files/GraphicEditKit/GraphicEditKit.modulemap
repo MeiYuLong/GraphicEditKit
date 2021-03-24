@@ -1,0 +1,6 @@
+framework module GraphicEditKit {
+  umbrella header "GraphicEditKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

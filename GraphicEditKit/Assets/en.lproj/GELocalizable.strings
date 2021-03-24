@@ -1,0 +1,53 @@
+/* 
+  GELocalizable.strings
+  Pods
+
+  Created by yulong mei on 2021/3/18.
+  
+*/
+"ge.text"="text";
+"ge.text_box"="text box";
+"ge.picture"="picture";
+"ge.QR_code"="QR code";
+"ge.Bar_code"="Bar code";
+"ge.glyph"="glyph";
+"ge.font_size"="font size";
+"ge.alignment"="alignment";
+"ge.indent"="indent";
+"ge.row_spacing"="row spacing";
+"ge.rotate"="rotate";
+"ge.delete"="delete";
+"ge.scale"="scale";
+"ge.Double_click"="Double click the text to edit the content";
+"ge.Are_you_sure"="Are you sure you want to quit";
+"ge.All_photos"="All photos";
+"ge.edit_picture"="edit picture";
+"ge.Printer_status"="Printer status is abnormal";
+"ge.Print_preview"="Print preview";
+"ge.Print_setting"="Print setting";
+"ge.Print_density"="Print density";
+"ge.Print_quantity"="Print quantity";
+"ge.Print_type"="Print type";
+"ge.Image_&_Text"="Image & Text";
+"ge.light"="light";
+"ge.moderate"="moderate";
+"ge.strong"="strong";
+"ge.portion"="portion";
+"ge.length"="length";
+"ge.print_now"="print now";
+"ge.Image-Text_printing"="Image-Text printing";
+"ge.generated"="generated";
+"ge.please_enter_barcode"="please enter to generate barcode ";
+"ge.please_enter_QRCode"="please enter to generate QRcode";
+"ge.Content_cannot_be_empty"="Content cannot be empty";
+"ge.Crop_image"="Crop image";
+"ge.Please_input_numbers"="Please input numbers, letters and symbols within 30 digits";
+"ge.Please_enter_100"="Please enter within 100 characters";
+"ge.Crop"="Crop";
+"ge.If_you_input_content"="If you input content  too long, it may not print normally";
+"ge.connection_successful"="The connection was successful";
+"ge.Bluetooth_abnormally"="Bluetooth is disconnected abnormally";
+"ge.please_input"="please input";
+"ge.quantity"="quantity";
+"ge.sure"="OK";
+"ge.cancel"="Cancel";

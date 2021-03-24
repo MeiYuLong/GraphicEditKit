@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kbc-fU-1AW">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="FyQ-fP-fw0">
+            <objects>
+                <navigationController id="kbc-fU-1AW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M3m-6N-67l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="UcM-rQ-1md"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xgx-mT-baw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-612" y="134"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="GraphicEditKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv9-7i-W6K">
+                                <rect key="frame" x="138" y="318.5" width="99" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="GraphicEditKit"/>
+                                <connections>
+                                    <action selector="go2GraphicEdit:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ge4-YF-kbO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilj-cc-AZd">
+                                <rect key="frame" x="266.5" y="125" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JL6-gS-yyh"/>
+                                </constraints>
+                                <state key="normal" title="QR Code"/>
+                                <connections>
+                                    <action selector="qrCodeAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="27G-W4-gTE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5P7-zv-ecG">
+                                <rect key="frame" x="37.5" y="125" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Wej-Ww-cbk"/>
+                                </constraints>
+                                <state key="normal" title="BarCode"/>
+                                <connections>
+                                    <action selector="barCodeAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xcD-sG-Iys"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vt-eh-aow">
+                                <rect key="frame" x="172" y="125" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cWp-WU-nVH"/>
+                                </constraints>
+                                <state key="normal" title="图片"/>
+                                <connections>
+                                    <action selector="imageAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gsk-ZB-yfc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.52858030323059069" blue="0.49716495377962988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ilj-cc-AZd" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="81" id="A2O-Ct-RpR"/>
+                            <constraint firstItem="5P7-zv-ecG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="81" id="AI0-jT-Iz1"/>
+                            <constraint firstItem="5vt-eh-aow" firstAttribute="leading" secondItem="5P7-zv-ecG" secondAttribute="trailing" constant="74.5" id="CXO-Qf-s5o"/>
+                            <constraint firstItem="5vt-eh-aow" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Lrf-XT-QBb"/>
+                            <constraint firstItem="5vt-eh-aow" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="81" id="b1N-FT-zfM"/>
+                            <constraint firstItem="fv9-7i-W6K" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="g3U-co-Exs"/>
+                            <constraint firstItem="fv9-7i-W6K" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="lmP-aV-C3P"/>
+                            <constraint firstItem="Ilj-cc-AZd" firstAttribute="leading" secondItem="5vt-eh-aow" secondAttribute="trailing" constant="63.5" id="xr8-l0-g3L"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7O5-0w-niW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="142" y="134"/>
+        </scene>
+    </scenes>
+</document>
