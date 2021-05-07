@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GraphicEditKit'
-  s.version          = '0.0.2'
-  s.summary          = 'A short description of GraphicEditKit.'
+  s.version          = '0.0.3'
+  s.summary          = 'Flash 图文编辑'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

@@ -18,12 +18,12 @@ extension UIViewController {
     typealias GEAlertControlerCancelClosure = (_ alertAction: UIAlertAction) -> Void
     
     
-    @objc(onLeftBarClick:)
+    @objc(ge_onLeftBarClick:)
     func ge_onLeftBarClick(_ sender:UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc(onRightBarClick:)
+    @objc(ge_onRightBarClick:)
     func ge_onRightBarClick(_ sender:UIBarButtonItem) {
         return
     }
