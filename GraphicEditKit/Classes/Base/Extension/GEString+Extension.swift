@@ -14,7 +14,14 @@ extension String {
         guard let bundle = Bundle(path: bundlePath + "/GraphicEditKit.bundle") else {
             return self
         }
-        let content = NSLocalizedString(self, tableName: "GELocalizable", bundle: bundle, value: "", comment: "")
+        var finalBundle: Bundle = bundle
+        
+        if let language = UserDefaults.standard.value(forKey: "Language") as? String, !language.isEmpty,
+           let bundlePath = bundle.path(forResource: language, ofType: "lproj"),
+           let bundle1 = Bundle(path: bundlePath) {
+            finalBundle = bundle1
+        }
+        let content = NSLocalizedString(self, tableName: "GELocalizable", bundle: finalBundle, value: "", comment: "")
         return content
     }
 }
