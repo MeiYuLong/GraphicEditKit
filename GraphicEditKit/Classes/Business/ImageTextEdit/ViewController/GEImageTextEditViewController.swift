@@ -8,6 +8,13 @@
 import UIKit
 import MBProgressHUD
 
+/// 图文编辑的类型
+public enum GEImageTextAddType: Int {
+    case Image = 2
+    case QRCode = 3
+    case BarCode = 4
+}
+
 public class GEImageTextEditViewController: GEBaseViewController {
 
     let toolHeight: CGFloat = 68.0
@@ -16,14 +23,6 @@ public class GEImageTextEditViewController: GEBaseViewController {
     var toolShowStatusY: CGFloat = 0.0
     var toolHideStatusY: CGFloat = 0.0
     var maxHeight: CGFloat = 0.0
-    
-    
-    /// 图文编辑的类型
-   public enum GEImageTextAddType: Int {
-        case Image = 2
-        case QRCode = 3
-        case BarCode = 4
-    }
     
     var navHeight: CGFloat {
         get {
