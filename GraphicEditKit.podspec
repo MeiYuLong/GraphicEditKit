@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GraphicEditKit'
-  s.version          = '0.0.7'
+  s.version          = '0.0.8'
   s.summary          = 'Flash GraphicEditKit 图文编辑'
 
 # This description is used to generate tags and improve search results.
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   
 #  私有的Header文件，不暴露出去
   s.private_header_files = [
-    'GraphicEditKit/Classes/Support/Services/C-Tool/*'
+    'GraphicEditKit/Classes/Support/Services/C-Tool/*.h'
   ]
   
 #   对外暴露的header文件

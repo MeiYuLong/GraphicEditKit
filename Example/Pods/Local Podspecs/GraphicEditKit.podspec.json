@@ -26,7 +26,7 @@
     ]
   },
   "private_header_files": [
-    "GraphicEditKit/Classes/Support/Services/C-Tool/*"
+    "GraphicEditKit/Classes/Support/Services/C-Tool/*.h"
   ],
   "pod_target_xcconfig": {
     "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
