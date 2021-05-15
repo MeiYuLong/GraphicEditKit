@@ -102,10 +102,10 @@ class GEImageService {
 
     static func imageModel(image: UIImage?) -> UIImage? {
         guard let image = image else { return nil }
-//        var newImage = self.grayModel(image:image)
-        let newImage = ZYFilterTool.freudSteinbergDitherImage(image)
-        
-        return newImage
+        guard let newImage = self.grayModel(image:image) else { return nil }
+//        let newImage = ZYFilterTool.freudSteinbergDitherImage(image)
+        let newImage1 = FPFloydImage.image(with: newImage)
+        return newImage1
     }
         
     static func grayModel(image: UIImage?) -> UIImage? {

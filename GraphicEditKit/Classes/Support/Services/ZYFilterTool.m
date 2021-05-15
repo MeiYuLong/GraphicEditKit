@@ -10,10 +10,51 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 #import <Foundation/Foundation.h>
+#import "FEFloyd.h"
 
 //#import "UIImage+ZY.h"
 @implementation ZYFilterTool
 //static  void *bitmap;
+
++ (UIImage *)floydWithImage:(UIImage *)inImage {
+    UIImage *resultImage;
+    // 分配内存
+    const int imageWidth = inImage.size.width;
+    const int imageHeight = inImage.size.height;
+    size_t bytesPerRow = imageWidth * 4;
+    uint32_t* oldImageBuf = (uint32_t*)malloc(bytesPerRow * imageHeight);
+    uint32_t* newImageBuf = (uint32_t*)malloc(bytesPerRow * imageHeight);
+    
+    // 创建context
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();// 色彩范围的容器
+    CGContextRef oldContext = CGBitmapContextCreate(oldImageBuf, imageWidth, imageHeight, 8, bytesPerRow, colorSpace,kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipLast);
+    CGContextDrawImage(oldContext, CGRectMake(0, 0, imageWidth, imageHeight), inImage.CGImage);
+    
+    CGContextRef newContext = CGBitmapContextCreate(newImageBuf, imageWidth, imageHeight, 8, bytesPerRow, colorSpace,kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipLast);
+    CGContextDrawImage(newContext, CGRectMake(0, 0, imageWidth, imageHeight), inImage.CGImage);
+        // 遍历像素
+//    int pixelNum = imageWidth * imageHeight;
+    uint32_t* pCurPtr = oldImageBuf;
+//    uint32_t* newCurPtr = newImageBuf;
+    uint8_t* ptr = (uint8_t*)pCurPtr;
+//    uint8_t* newptr = (uint8_t*)newCurPtr;
+    floyd_inplace(ptr, imageWidth, imageHeight, 0.7, 0.3, 0.7);
+//    floyd_core_inplace32(pCurPtr, imageWidth, imageHeight, 0.7, 0.3, 0.7);
+    // 将内存转成image
+    CGDataProviderRef dataProvider =CGDataProviderCreateWithData(NULL, oldImageBuf, bytesPerRow * imageHeight, nil);
+    CGImageRef imageRef = CGImageCreate(imageWidth, imageHeight,8, 32, bytesPerRow, colorSpace,kCGImageAlphaLast |kCGBitmapByteOrder32Little, dataProvider,NULL,true,kCGRenderingIntentDefault);
+    CGDataProviderRelease(dataProvider);
+    
+    resultImage = [UIImage imageWithCGImage:imageRef];
+    
+    // 释放
+    CGImageRelease(imageRef);
+    CGContextRelease(oldContext);
+    CGContextRelease(newContext);
+    CGColorSpaceRelease(colorSpace);
+    return resultImage;
+}
+
 + (UIImage*)ditherImage:(UIImage *)inImage{
     //获取图片
     CIImage *image = [CIImage imageWithCGImage:[inImage CGImage]];
@@ -360,93 +401,98 @@ static void changeRGBA(int *red,int *green,int *blue,int *alpha, const float* f)
     int b = (value & 0x0000FF00) >> 8;
     int a = value & 0x000000FF;
 
+    newptr[3] = r;
+    newptr[2] = g;
+    newptr[1] = b;
+    newptr[0] = a;
+
     uint8_t thisR = newptr[3];
     uint8_t thisG = newptr[2];
     uint8_t thisB = newptr[1];
     uint16_t thisR10 = (uint16_t)thisR;
     uint16_t thisG10 = (uint16_t)thisG;
     uint16_t thisB10 = (uint16_t)thisB;
-    int thisColorDepth = [ZYFilterTool colorDepthWithPtr:newptr];
-    int black = 30;
-    if (thisColorDepth > 200) {
-
-    }
-    if (column + 1 < width) {
-        int rIndex = row * width + column + 1;
-        uint32_t *rightPtr = imageBuf + rIndex;
-        uint8_t* rptr = (uint8_t*)rightPtr;
-        int colorDepth = [ZYFilterTool colorDepthWithPtr:rptr];
-        if (colorDepth < black) {
-            return;
-        }
-    }
-    if (column - 1 < 0) {
-        int lIndex = row * width + column - 1;
-        uint32_t *leftPtr = imageBuf + lIndex;
-        uint8_t* lptr = (uint8_t*)leftPtr;
-        int colorDepth = [ZYFilterTool colorDepthWithPtr:lptr];
-        if (colorDepth < black) {
-            return;
-        }
-    }
-    if (row - 1 >= 0) {
-        int tIndex = (row - 1) * width + column;
-        uint32_t *topPtr = imageBuf + tIndex;
-        uint8_t* tptr = (uint8_t*)topPtr;
-        int colorDepth = [ZYFilterTool colorDepthWithPtr:tptr];
-        if (colorDepth < black) {
-            return;
-        }
-        if (column + 1 < width) {
-            int rIndex = (row - 1) * width + column + 1;
-            uint32_t *rightPtr = imageBuf + rIndex;
-            uint8_t* rptr = (uint8_t*)rightPtr;
-            int colorDepth = [ZYFilterTool colorDepthWithPtr:rptr];
-            if (colorDepth < black) {
-                return;
-            }
-        }
-        if (column - 1 < 0) {
-            int lIndex = (row - 1) * width + column - 1;
-            uint32_t *leftPtr = imageBuf + lIndex;
-            uint8_t* lptr = (uint8_t*)leftPtr;
-            int colorDepth = [ZYFilterTool colorDepthWithPtr:lptr];
-            if (colorDepth < black) {
-                return;
-            }
-        }
-
-    }
-    if (row + 1 < height) {
-        int bIndex = (row + 1) * width + column;
-        uint32_t *bottomPtr = imageBuf + bIndex;
-        uint8_t* bptr = (uint8_t*)bottomPtr;
-        int colorDepth = [ZYFilterTool colorDepthWithPtr:bptr];
-        if (colorDepth < black) {
-            return;
-        }
-        if (column + 1 < width) {
-            int rIndex = (row + 1) * width + column + 1;
-            uint32_t *rightPtr = imageBuf + rIndex;
-            uint8_t* rptr = (uint8_t*)rightPtr;
-            int colorDepth = [ZYFilterTool colorDepthWithPtr:rptr];
-            if (colorDepth < black) {
-                return;
-            }
-        }
-        if (column - 1 < 0) {
-            int lIndex = (row + 1) * width + column - 1;
-            uint32_t *leftPtr = imageBuf + lIndex;
-            uint8_t* lptr = (uint8_t*)leftPtr;
-            int colorDepth = [ZYFilterTool colorDepthWithPtr:lptr];
-            if (colorDepth < black) {
-                return;
-            }
-        }
-    }
-    if (thisColorDepth < 30) {
-        return;
-    }
+//    int thisColorDepth = [ZYFilterTool colorDepthWithPtr:newptr];
+//    int black = 30;
+//    if (thisColorDepth > 200) {
+//
+//    }
+//    if (column + 1 < width) {
+//        int rIndex = row * width + column + 1;
+//        uint32_t *rightPtr = imageBuf + rIndex;
+//        uint8_t* rptr = (uint8_t*)rightPtr;
+//        int colorDepth = [ZYFilterTool colorDepthWithPtr:rptr];
+//        if (colorDepth < black) {
+//            return;
+//        }
+//    }
+//    if (column - 1 < 0) {
+//        int lIndex = row * width + column - 1;
+//        uint32_t *leftPtr = imageBuf + lIndex;
+//        uint8_t* lptr = (uint8_t*)leftPtr;
+//        int colorDepth = [ZYFilterTool colorDepthWithPtr:lptr];
+//        if (colorDepth < black) {
+//            return;
+//        }
+//    }
+//    if (row - 1 >= 0) {
+//        int tIndex = (row - 1) * width + column;
+//        uint32_t *topPtr = imageBuf + tIndex;
+//        uint8_t* tptr = (uint8_t*)topPtr;
+//        int colorDepth = [ZYFilterTool colorDepthWithPtr:tptr];
+//        if (colorDepth < black) {
+//            return;
+//        }
+//        if (column + 1 < width) {
+//            int rIndex = (row - 1) * width + column + 1;
+//            uint32_t *rightPtr = imageBuf + rIndex;
+//            uint8_t* rptr = (uint8_t*)rightPtr;
+//            int colorDepth = [ZYFilterTool colorDepthWithPtr:rptr];
+//            if (colorDepth < black) {
+//                return;
+//            }
+//        }
+//        if (column - 1 < 0) {
+//            int lIndex = (row - 1) * width + column - 1;
+//            uint32_t *leftPtr = imageBuf + lIndex;
+//            uint8_t* lptr = (uint8_t*)leftPtr;
+//            int colorDepth = [ZYFilterTool colorDepthWithPtr:lptr];
+//            if (colorDepth < black) {
+//                return;
+//            }
+//        }
+//
+//    }
+//    if (row + 1 < height) {
+//        int bIndex = (row + 1) * width + column;
+//        uint32_t *bottomPtr = imageBuf + bIndex;
+//        uint8_t* bptr = (uint8_t*)bottomPtr;
+//        int colorDepth = [ZYFilterTool colorDepthWithPtr:bptr];
+//        if (colorDepth < black) {
+//            return;
+//        }
+//        if (column + 1 < width) {
+//            int rIndex = (row + 1) * width + column + 1;
+//            uint32_t *rightPtr = imageBuf + rIndex;
+//            uint8_t* rptr = (uint8_t*)rightPtr;
+//            int colorDepth = [ZYFilterTool colorDepthWithPtr:rptr];
+//            if (colorDepth < black) {
+//                return;
+//            }
+//        }
+//        if (column - 1 < 0) {
+//            int lIndex = (row + 1) * width + column - 1;
+//            uint32_t *leftPtr = imageBuf + lIndex;
+//            uint8_t* lptr = (uint8_t*)leftPtr;
+//            int colorDepth = [ZYFilterTool colorDepthWithPtr:lptr];
+//            if (colorDepth < black) {
+//                return;
+//            }
+//        }
+//    }
+//    if (thisColorDepth < 30) {
+//        return;
+//    }
 
 
 

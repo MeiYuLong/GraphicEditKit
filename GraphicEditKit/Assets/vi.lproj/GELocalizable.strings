@@ -1,0 +1,53 @@
+/* 
+  GELocalizable.strings
+  Pods
+
+  Created by yulong mei on 2021/3/18.
+  
+*/
+"ge.text"="Văn bản";
+"ge.text_box"="Hộp văn bản";
+"ge.picture"="Hình ảnh";
+"ge.QR_code"="Mã QR";
+"ge.Bar_code"="Mã vạch";
+"ge.glyph"="Font chữ";
+"ge.font_size"="Cỡ chữ";
+"ge.alignment"="Căn lề";
+"ge.indent"="Thụt lề";
+"ge.row_spacing"="Khoảng cách dòng";
+"ge.rotate"="Xoay tròn";
+"ge.delete"="Xóa";
+"ge.scale"="Thu phóng";
+"ge.Double_click"="Bấm đúp để chỉnh sửa nội dung văn bản";
+"ge.Are_you_sure"="Xác nhận thoát hay không";
+"ge.All_photos"="Tất cả hình ảnh";
+"ge.edit_picture"="Chỉnh sửa hình ảnh";
+"ge.Printer_status"="Trạng thái máy in khác thường";
+"ge.Print_preview"="Xem trước bản in";
+"ge.Print_setting"="Cài đặt về in";
+"ge.Print_density"="Mật độ in";
+"ge.Print_quantity"="打印数量";
+"ge.Print_type"="Chế độ in";
+"ge.Image_&_Text"="Đồ họa";
+"ge.light"="Loãng";
+"ge.moderate"="Vừa phải";
+"ge.strong"="Đậm";
+"ge.portion"="Bản";
+"ge.length"="长度";
+"ge.print_now"="In ngay";
+"ge.Image-Text_printing"="In đồ họa";
+"ge.generated"="Tạo ra";
+"ge.please_enter_barcode"="Vui lòng nhập để tạo mã vạch";
+"ge.please_enter_QRCode"="Vui lòng nhập để tạo mã QR";
+"ge.Content_cannot_be_empty"="Nội dung không được để trống";
+"ge.Crop_image"="裁剪图片";
+"ge.Please_input_numbers"="Vui lòng nhập con số, chữ cái và ký hiệu trong vòng 30 ký tự";
+"ge.Please_enter_100"="Vui lòng nhập tối đa 100 ký tự";
+"ge.Crop"="Chỉnh sửa";
+"ge.If_you_input_content"="Nội dung nhập quá dài có thể sẽ không in bình thường";
+"ge.connection_successful"="Kết nối thành công";
+"ge.Bluetooth_abnormally"="Bluetooth bị ngắt kết nối bất thường";
+"ge.please_input"="Vui lòng nhập";
+"ge.quantity"="Số lượng";
+"ge.sure"="Xác nhận";
+"ge.cancel"="Hủy bỏ";

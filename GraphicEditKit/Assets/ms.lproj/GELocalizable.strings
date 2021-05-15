@@ -1,0 +1,53 @@
+/* 
+  GELocalizable.strings
+  Pods
+
+  Created by yulong mei on 2021/3/18.
+  
+*/
+"ge.text"="Teks";
+"ge.text_box"="Kotak teks";
+"ge.picture"="Gambar";
+"ge.QR_code"="Kod QR";
+"ge.Bar_code"="Kod bar";
+"ge.glyph"="Fon";
+"ge.font_size"="Saiz fon";
+"ge.alignment"="Sejajar";
+"ge.indent"="Inden";
+"ge.row_spacing"="Jarak";
+"ge.rotate"="Putar";
+"ge.delete"="Padam";
+"ge.scale"="Zum";
+"ge.Double_click"="Klik dua kali untuk edit";
+"ge.Are_you_sure"="Anda pasti nak log keluar?";
+"ge.All_photos"="Semua gambar";
+"ge.edit_picture"="Edit gambar";
+"ge.Printer_status"="Status pencetak tidak normal";
+"ge.Print_preview"="Ketumpatan cetakan";
+"ge.Print_setting"="Tetapan pencetak";
+"ge.Print_density"="Kepekatan pencetak";
+"ge.Print_quantity"="打印数量";
+"ge.Print_type"="Mod cetak";
+"ge.Image_&_Text"="Gambar";
+"ge.light"="Ringan";
+"ge.moderate"="Sederhana";
+"ge.strong"="Pekat";
+"ge.portion"="Salinan";
+"ge.length"="长度";
+"ge.print_now"="Cetak sekarang";
+"ge.Image-Text_printing"="Cetak grafik";
+"ge.generated"="Menjana";
+"ge.please_enter_barcode"="Sila masukkan kod bar";
+"ge.please_enter_QRCode"="Sila isikan kod QR";
+"ge.Content_cannot_be_empty"="Kandugan tidak boleh dikosangkan";
+"ge.Crop_image"="裁剪图片";
+"ge.Please_input_numbers"="Sila isikan nombor, huruf, dan simbol tak melebihi 30 digit";
+"ge.Please_enter_100"="Sila isikan teks tak melebihi 100 huruf";
+"ge.Crop"="Memotong";
+"ge.If_you_input_content"="Kandungan input terlalu panjang, mungkin tidak dapat mencetak secara normal";
+"ge.connection_successful"="Sambungan berjaya";
+"ge.Bluetooth_abnormally"="Bluetooth terputus secara tidak normal";
+"ge.please_input"="Sila isikan";
+"ge.quantity"="Bilangan";
+"ge.sure"="Pasti";
+"ge.cancel"="Batal";

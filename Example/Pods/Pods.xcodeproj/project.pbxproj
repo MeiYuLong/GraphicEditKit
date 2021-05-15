@@ -159,6 +159,12 @@
 		441FE4765E82E87D2B4BE96955327740 /* GEUIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C7E6EBB6FC2878B0B07A8EBF4397C /* GEUIImage+Extension.swift */; };
 		4490B114B8192E1D0529B2034256113E /* GPUImageNobleCornerDetectionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C09B23AB52C02DDAC9C1AC3DB229D48 /* GPUImageNobleCornerDetectionFilter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		45B398FF74B93C43249C5ED0D0D1867F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660ED23F9CED8C1A07BB234BB4539EC8 /* Foundation.framework */; };
+		461C1A3B264FB484003F4A77 /* FEFloyd.h in Headers */ = {isa = PBXBuildFile; fileRef = 461C1A35264FB484003F4A77 /* FEFloyd.h */; };
+		461C1A3C264FB484003F4A77 /* FPFloydImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 461C1A36264FB484003F4A77 /* FPFloydImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		461C1A3D264FB484003F4A77 /* FPFloydImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 461C1A37264FB484003F4A77 /* FPFloydImage.m */; };
+		461C1A3E264FB484003F4A77 /* FEFloyd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461C1A38264FB484003F4A77 /* FEFloyd.cpp */; };
+		461C1A3F264FB484003F4A77 /* baseMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461C1A39264FB484003F4A77 /* baseMethod.cpp */; };
+		461C1A40264FB484003F4A77 /* baseMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 461C1A3A264FB484003F4A77 /* baseMethod.h */; };
 		4645F85231461BBB14805BD0A3EE9D17 /* MYL_Jewelry.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACB680EECD5D33C249140717C3FC7AC8 /* MYL_Jewelry.xcassets */; };
 		466F892BBC907A95F841A591C9529EE1 /* GPUImageSaturationBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 452A6C0DDAB9AFC7F35C28341C760DB3 /* GPUImageSaturationBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4692DB633A45013DFD053142BAADD7FA /* GPUImageNonMaximumSuppressionFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 66C6C3FE480C4031C4E3C7EE83ADEFF7 /* GPUImageNonMaximumSuppressionFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -834,6 +840,16 @@
 		4599DA7BB05D16C91AB664AE73C6793A /* GPUImageAddBlendFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageAddBlendFilter.h; path = framework/Source/GPUImageAddBlendFilter.h; sourceTree = "<group>"; };
 		45EBDC0924B089DBFE03F9E0E039B6EF /* GPUImageLuminanceThresholdFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageLuminanceThresholdFilter.h; path = framework/Source/GPUImageLuminanceThresholdFilter.h; sourceTree = "<group>"; };
 		4614794378B176361F3595970EAC2A14 /* GPUImageHighlightShadowFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageHighlightShadowFilter.h; path = framework/Source/GPUImageHighlightShadowFilter.h; sourceTree = "<group>"; };
+		461C1A25264F6554003F4A77 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/GELocalizable.strings; sourceTree = "<group>"; };
+		461C1A26264F655D003F4A77 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/GELocalizable.strings; sourceTree = "<group>"; };
+		461C1A27264F656E003F4A77 /* lo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lo; path = lo.lproj/GELocalizable.strings; sourceTree = "<group>"; };
+		461C1A28264FA20A003F4A77 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/GELocalizable.strings"; sourceTree = "<group>"; };
+		461C1A35264FB484003F4A77 /* FEFloyd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEFloyd.h; sourceTree = "<group>"; };
+		461C1A36264FB484003F4A77 /* FPFloydImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFloydImage.h; sourceTree = "<group>"; };
+		461C1A37264FB484003F4A77 /* FPFloydImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFloydImage.m; sourceTree = "<group>"; };
+		461C1A38264FB484003F4A77 /* FEFloyd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FEFloyd.cpp; sourceTree = "<group>"; };
+		461C1A39264FB484003F4A77 /* baseMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseMethod.cpp; sourceTree = "<group>"; };
+		461C1A3A264FB484003F4A77 /* baseMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseMethod.h; sourceTree = "<group>"; };
 		468AD6CC3AB3BC472C0DD52B1FD3A94C /* GPUImageSingleComponentGaussianBlurFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageSingleComponentGaussianBlurFilter.h; path = framework/Source/GPUImageSingleComponentGaussianBlurFilter.h; sourceTree = "<group>"; };
 		46B75984D5135DBCFE09E97C898D0382 /* Pods-GraphicEditKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GraphicEditKit_Tests-Info.plist"; sourceTree = "<group>"; };
 		4701684ABBE7C58FBDE09596606F9F64 /* GraphicEditKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GraphicEditKit-prefix.pch"; sourceTree = "<group>"; };
@@ -1970,6 +1986,12 @@
 		7F070F066E0A7E3389FC2D6554BD2BAF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				461C1A39264FB484003F4A77 /* baseMethod.cpp */,
+				461C1A3A264FB484003F4A77 /* baseMethod.h */,
+				461C1A38264FB484003F4A77 /* FEFloyd.cpp */,
+				461C1A35264FB484003F4A77 /* FEFloyd.h */,
+				461C1A36264FB484003F4A77 /* FPFloydImage.h */,
+				461C1A37264FB484003F4A77 /* FPFloydImage.m */,
 				ACF4070A0CACECA4196BE85BEACA95E9 /* GEImageService.swift */,
 				72E773DD12C496795F42C160F991FC16 /* GETextService.swift */,
 				7C226BC2CA3FDD78327AB64A3431A48F /* ZYFilterTool.h */,
@@ -2549,7 +2571,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E0492906B1705B98C0AB5D8304D662 /* GraphicEditKit-umbrella.h in Headers */,
+				461C1A40264FB484003F4A77 /* baseMethod.h in Headers */,
 				EE0BB6011192B501094D33BA2F5B0204 /* ZYFilterTool.h in Headers */,
+				461C1A3B264FB484003F4A77 /* FEFloyd.h in Headers */,
+				461C1A3C264FB484003F4A77 /* FPFloydImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2806,6 +2831,10 @@
 				Base,
 				th,
 				"zh-Hans",
+				ms,
+				vi,
+				lo,
+				"zh-Hant",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 3F928245B302FEAAA179E8E09E2A5DF2 /* Products */;
@@ -3251,12 +3280,14 @@
 				0F4009A9BB29317B850C4DDAFE2DF40D /* GECanvasTextView.swift in Sources */,
 				6B9B6C40C213E38546803CDD664B70A8 /* GECodeTool.swift in Sources */,
 				B818E09233E8998D45E9769DD4CC0832 /* GECropLayerView.swift in Sources */,
+				461C1A3F264FB484003F4A77 /* baseMethod.cpp in Sources */,
 				5F42EC5B041DC31897F818DDDD038166 /* GEDefines.swift in Sources */,
 				C216E552BAC98FAC8D834B5489A74553 /* GEEditContentView.swift in Sources */,
 				3576017E357C932E495BA9BC2F121AFA /* GEEditTagView.swift in Sources */,
 				14965E0CEF2AC4DD704F7FE6A223C791 /* GEImageCropManager.swift in Sources */,
 				7E8930DDF6479DF5AD8520DB482D95A4 /* GEImageCropViewController.swift in Sources */,
 				531C584B1AE36FD63D25E176E32DF7E7 /* GEImageEditManager.swift in Sources */,
+				461C1A3E264FB484003F4A77 /* FEFloyd.cpp in Sources */,
 				2E3F46EAB33932B507FB50540CEFBD58 /* GEImageEditView.swift in Sources */,
 				69DA42D50E3C64C40A53801A4F4475B1 /* GEImageInfo.swift in Sources */,
 				9FB4C6F527BBE5E52EE8503AA2FA8296 /* GEImageService.swift in Sources */,
@@ -3268,6 +3299,7 @@
 				FA9BF1411065FB7AA6C09A0689089E47 /* GENSAttributedString+Extension.swift in Sources */,
 				ACB6DC97745B1E05E5D22CB8611E785D /* GEPlaceHolderTextView.swift in Sources */,
 				13B629A688B21606005872B9F355866D /* GEPrintModel.swift in Sources */,
+				461C1A3D264FB484003F4A77 /* FPFloydImage.m in Sources */,
 				E6DD2D8B7068B84D83E54C2A10EA21C9 /* GEPrintPreviewOperationView.swift in Sources */,
 				DB365A7DFB03455429F2B0FED8F3D5E2 /* GEPrintPreviewToolView.swift in Sources */,
 				57B381746D9396AAA25537D33558A0D8 /* GEPrintPreviewViewController.swift in Sources */,
@@ -3430,6 +3462,10 @@
 				E55A811BDE2565A969F4551ACAEC8395 /* GELocalizable.strings */,
 				5858D207AF70EB2331AD708E90C2E7B4 /* GELocalizable.strings */,
 				2119BE35D3B22D65DE078D20F6FAAACB /* GELocalizable.strings */,
+				461C1A25264F6554003F4A77 /* ms */,
+				461C1A26264F655D003F4A77 /* vi */,
+				461C1A27264F656E003F4A77 /* lo */,
+				461C1A28264FA20A003F4A77 /* zh-Hant */,
 			);
 			name = GELocalizable.strings;
 			path = GraphicEditKit/Assets;

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GraphicEditKit'
-  s.version          = '0.0.5'
+  s.version          = '0.0.6'
   s.summary          = 'Flash 图文编辑'
 
 # This description is used to generate tags and improve search results.
@@ -33,9 +33,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'GraphicEditKit/Classes/**/*'
   
-   s.resource_bundles = {
-     'GraphicEditKit' => ['GraphicEditKit/Assets/**/*']
-   }
+  s.resource_bundles = {
+      'GraphicEditKit' => ['GraphicEditKit/Assets/**/*']
+  }
+   
+   s.public_header_files = 'ParseAddressKit/Classes/*.h'
    
    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

@@ -15,7 +15,12 @@ extension String {
             return self
         }
         var finalBundle: Bundle = bundle
-        
+        if let languages = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String],
+           let first = languages.first,
+           let bundlePath = bundle.path(forResource: first, ofType: "lproj"),
+           let bundle1 = Bundle(path: bundlePath)  {
+            finalBundle = bundle1
+        }
         if let language = UserDefaults.standard.value(forKey: "Language") as? String, !language.isEmpty,
            let bundlePath = bundle.path(forResource: language, ofType: "lproj"),
            let bundle1 = Bundle(path: bundlePath) {

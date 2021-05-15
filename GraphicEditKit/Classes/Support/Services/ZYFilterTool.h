@@ -21,4 +21,6 @@
 + (UIImage*)imageWithImage:(UIImage*)inImage;
 + (UIImage*)ditherImage:(UIImage *)inImage;
 + (UIImage *)freudSteinbergDitherImage:(UIImage *)inImage;
++ (UIImage *)floydWithImage:(UIImage *)inImage;
+
 @end

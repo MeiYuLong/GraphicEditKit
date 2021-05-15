@@ -1,0 +1,53 @@
+/* 
+  GELocalizable.strings
+  Pods
+
+  Created by yulong mei on 2021/3/18.
+  
+*/
+"ge.text"="ຂໍ້ຄວາມ";
+"ge.text_box"="ກ່ອງຂໍ້ຄວາມ";
+"ge.picture"="ຮູບພາບ";
+"ge.QR_code"="ບາໂຄດ";
+"ge.Bar_code"="ບາໂຄດ";
+"ge.glyph"="ຕົວອັກສອນ";
+"ge.font_size"="ຂະໜາດຕົວໜັງສື";
+"ge.alignment"="ຈັດລຽນ";
+"ge.indent"="ຊຸມເຂົ້າ";
+"ge.row_spacing"="ໄລຍະຫ່າງຂອງແຖວ";
+"ge.rotate"="ໝູນ";
+"ge.delete"="ລຶບ";
+"ge.scale"="ຂະຫຍາຍ";
+"ge.Double_click"="ກົດສອງຄັ້ງເພື່ອດັດແກ້ເນື້ອຫາຂໍ້ຄວາມ";
+"ge.Are_you_sure"="ຢືນຢັນທີ່ຈະອອກຫຼືບໍ່?";
+"ge.All_photos"="ຮູບພາບທັງໝົດ";
+"ge.edit_picture"="ແກ້ໄຂຮູບພາບ";
+"ge.Printer_status"="ສະພາບການຂອງເຄື່ອງປິ້ນຜິດປົກກະຕິ";
+"ge.Print_preview"="ຕົວຢ່າງການປິ້ນ";
+"ge.Print_setting"="ການຕັ້ງຄ່າຂອງເຄື່ອງປິ້ນ";
+"ge.Print_density"="ຄວາມເຂັ້ມຂອງການປິ້ນ";
+"ge.Print_quantity"="打印数量";
+"ge.Print_type"="ຮູບແບບການປິ້ນ";
+"ge.Image_&_Text"="ຮູບຕົວໜັງສື";
+"ge.light"="ຈືດ";
+"ge.moderate"="ປານກາງ";
+"ge.strong"="ເຂັ້ມ";
+"ge.portion"="ຊຸດ";
+"ge.length"="长度";
+"ge.print_now"="ປິ້ນດຽວນີ້";
+"ge.Image-Text_printing"="ປິ້ນຮູບຕົວໜັງສື";
+"ge.generated"="ກາຍເປັນ";
+"ge.please_enter_barcode"="ກະລຸນາປ້ອນເລກQR";
+"ge.please_enter_QRCode"="ກະລຸນາໃສ່ເພື່ອສ້າງລະຫັດ QR";
+"ge.Content_cannot_be_empty"="ເນື້ອໃນບໍ່ສາມາດວ່າງເປົ່າໄດ້";
+"ge.Crop_image"="裁剪图片";
+"ge.Please_input_numbers"="ກະລຸນາໃສ່ຕົວເລກ, ຕົວອັກສອນ ແລະ ສັນຍາລັກພາຍໃນ 30 ຕົວ";
+"ge.Please_enter_100"="ກະລຸນາໃສ່ຕົວອັກຂະລະພາຍໃນ 100 ໂຕອັກຂະລະ";
+"ge.Crop"="ຕັດຕໍ່";
+"ge.If_you_input_content"="ປ້ອນຂໍ້ມູນເຂົ້າຍາວເກີນໄປ, ມັນອາດເຮັດໃຫ້ປິ້ນບໍ່ປົກກະຕິ";
+"ge.connection_successful"="ເຊື່ອມຕໍ່ສຳເລັດ";
+"ge.Bluetooth_abnormally"="Bluetooth ຕັດເຊື່ອມຕໍ່ແບບຜິດປົກກະຕິ";
+"ge.please_input"="ກະລຸນາປ້ອນໃສ່";
+"ge.quantity"="ຈຳນວນ";
+"ge.sure"="ຢືນຢັນ";
+"ge.cancel"="ຍົກເລີກ";
