@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GraphicEditKit'
-  s.version          = '0.0.6'
-  s.summary          = 'Flash 图文编辑'
+  s.version          = '0.0.7'
+  s.summary          = 'Flash GraphicEditKit 图文编辑'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  GraphicEditKit 用来满足您的图片文字拼接的需要，快来试试吧！
                        DESC
 
   s.homepage         = 'https://github.com/MeiYuLong/GraphicEditKit.git'
@@ -36,8 +36,14 @@ TODO: Add long description of the pod here.
   s.resource_bundles = {
       'GraphicEditKit' => ['GraphicEditKit/Assets/**/*']
   }
-   
-   s.public_header_files = 'ParseAddressKit/Classes/*.h'
+  
+#  私有的Header文件，不暴露出去
+  s.private_header_files = [
+    'GraphicEditKit/Classes/Support/Services/C-Tool/*'
+  ]
+  
+#   对外暴露的header文件
+#   s.public_header_files = 'GraphicEditKit/Classes/**/**/*.h'
    
    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

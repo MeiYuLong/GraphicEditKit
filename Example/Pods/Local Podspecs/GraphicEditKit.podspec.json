@@ -1,8 +1,8 @@
 {
   "name": "GraphicEditKit",
-  "version": "0.0.1",
-  "summary": "A short description of GraphicEditKit.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.0.7",
+  "summary": "Flash GraphicEditKit 图文编辑",
+  "description": "GraphicEditKit 用来满足您的图片文字拼接的需要，快来试试吧！",
   "homepage": "https://github.com/MeiYuLong/GraphicEditKit.git",
   "license": {
     "type": "MIT",
@@ -13,16 +13,26 @@
   },
   "source": {
     "git": "https://github.com/MeiYuLong/GraphicEditKit.git",
-    "tag": "0.0.1"
+    "tag": "0.0.7"
   },
   "platforms": {
     "ios": "10.0"
   },
+  "swift_versions": "5.0",
   "source_files": "GraphicEditKit/Classes/**/*",
   "resource_bundles": {
     "GraphicEditKit": [
       "GraphicEditKit/Assets/**/*"
     ]
+  },
+  "private_header_files": [
+    "GraphicEditKit/Classes/Support/Services/C-Tool/*"
+  ],
+  "pod_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "user_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
   },
   "dependencies": {
     "SnapKit": [
@@ -40,5 +50,6 @@
     "FlashPrinter": [
 
     ]
-  }
+  },
+  "swift_version": "5.0"
 }

@@ -11,6 +11,7 @@
 #endif
 
 #import "FPFloydImage.h"
+#import "ZYFilterTool.h"
 
 FOUNDATION_EXPORT double GraphicEditKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char GraphicEditKitVersionString[];
