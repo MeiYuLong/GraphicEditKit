@@ -113,6 +113,9 @@ class GEImageService {
         let picture = GPUImagePicture(image: image, smoothlyScaleOutput: true)
         let filterGroup = GPUImageFilterGroup()
         picture?.addTarget(filterGroup)
+        let f2 = GPUImageSharpenFilter()
+        filterGroup.ftp_addFilter(filter: f2)
+        f2.sharpness = 1.3
         let f1 = GPUImageGrayscaleFilter()
         filterGroup.ftp_addFilter(filter: f1)
         picture?.processImage()

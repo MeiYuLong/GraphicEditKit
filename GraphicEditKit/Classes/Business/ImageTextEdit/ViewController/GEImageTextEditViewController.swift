@@ -7,6 +7,8 @@
 
 import UIKit
 import MBProgressHUD
+import IQKeyboardManagerSwift
+import FlashHookKit
 
 /// 图文编辑的类型
 public enum GEImageTextAddType: Int {
@@ -104,6 +106,7 @@ public class GEImageTextEditViewController: GEBaseViewController {
         
         if let type = self.addType {
             let _ = self.toolBarShouldSelected(index: type.rawValue)
+            self.addType = nil
         }
     }
     
@@ -128,20 +131,19 @@ public class GEImageTextEditViewController: GEBaseViewController {
     /// 埋点
     private func buriedPointEvent() {
         let second = Calendar.current.dateComponents([.second], from: startTime, to: Date()).second
-        let param: [String: Any] = ["image_text_print_time": second ?? 0]
-//        FEAnalysisService.shareInstance.buriedPointEvent(eventName: "B0001_Image_Text_Printing", params: param)
+        FHAnalysis.shared.logEvent(event: .imageTextEditing_B0001(image_text_print_time: second ?? 0))
     }
         
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        IQKeyboardManager.shared.enable = false
-//        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        IQKeyboardManager.shared.enable = true
-//        IQKeyboardManager.shared.enableAutoToolbar = true
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
     }
     
     func loadData() {
@@ -196,7 +198,11 @@ public class GEImageTextEditViewController: GEBaseViewController {
             let alert = UIAlertController.init(title: "", message: "ge.Are_you_sure".GE_Locale, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "ge.sure".GE_Locale, style: .default) { [weak self](_) in
                 self?.scrollTextView.text = ""
-                let _ = self?.scrollTextView.subviews.map{ $0.removeFromSuperview() }
+                let _ = self?.scrollTextView.subviews.map{
+                    if $0 is GEBaseEditView {
+                        $0.removeFromSuperview()
+                    }
+                }
             }
             let cancelAction = UIAlertAction.init(title: "ge.cancel".GE_Locale, style: .cancel, handler: nil)
             alert.addAction(action)

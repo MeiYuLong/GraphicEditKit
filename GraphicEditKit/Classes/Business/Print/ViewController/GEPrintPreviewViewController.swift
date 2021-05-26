@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import FlashPrinter
+import FlashHookKit
 
 /// 打印预览界面
 class GEPrintPreviewViewController: GEBaseViewController {
@@ -118,17 +119,13 @@ class GEPrintPreviewViewController: GEBaseViewController {
 //MARK: 打印逻辑
 extension GEPrintPreviewViewController {
     
-//    private func buriedPointEvent() {
-//        let date = Date()
-//        let format = DateFormatter()
-//        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        let dateStr = format.string(from: date)
-//        let param: [String: Any] = ["print_time": dateStr,
-//                                    "print_mode": picModel == .text ? "Text" : "Image_Text",
-//                                    "print_length": String(format: "%.1f", self.bottomView.lenth)]
-//        FEAnalysisService.shareInstance.buriedPointEvent(eventName: "B0101_print_now", params: param)
-//    }
-//
+    private func buriedPointEvent() {
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateStr = format.string(from: date)
+        FHAnalysis.shared.logEvent(event: .printNow_B0101(print_time: dateStr, print_mode: picModel == .text ? "Text" : "Image_Text", print_length: String(format: "%.1f", self.bottomView.lenth)))
+    }
     
     /// 刷新ImageView
     func reloadImageView() {

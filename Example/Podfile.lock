@@ -1,15 +1,19 @@
 PODS:
+  - FlashHookKit (0.0.1)
   - FlashPrinter (1.0.3):
     - MBProgressHUD (~> 1.1.0)
     - MYL_Jewelry (~> 0.0.3)
     - SnapKit (~> 5.0.0)
   - GPUImage (0.1.7)
-  - GraphicEditKit (0.0.7):
+  - GraphicEditKit (0.0.8):
+    - FlashHookKit
     - FlashPrinter
     - GPUImage (~> 0.1.7)
+    - IQKeyboardManagerSwift (~> 6.5.6)
     - JPImageresizerView (~> 1.7.7)
     - MBProgressHUD (~> 1.1.0)
     - SnapKit (~> 5.0.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - JPImageresizerView (1.7.8)
   - MBProgressHUD (1.1.0)
   - MYL_Jewelry (0.0.3)
@@ -20,7 +24,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - FlashHookKit
     - FlashPrinter
+    - IQKeyboardManagerSwift
     - MYL_Jewelry
   trunk:
     - GPUImage
@@ -33,9 +39,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  FlashHookKit: 13250ba1eec50e4ae37010cf00a4ee516e4c1982
   FlashPrinter: 06cd397841a8f1f2546a0f68cc98e277a2ea0896
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  GraphicEditKit: d7d6ac1eb84e6073ae543ea91d716b162a6d67b2
+  GraphicEditKit: 0b1715c007d4337a76d51e4546f23c48b079bfa4
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   JPImageresizerView: 34f4a1f2d2196ddf148443f26dc4c4a41cca5b06
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MYL_Jewelry: 723c5f6afe82e50f6d704a313771fb4e5637c000

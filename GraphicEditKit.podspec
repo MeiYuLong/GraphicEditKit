@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GraphicEditKit'
-  s.version          = '0.0.8'
+  s.version          = '0.0.9'
   s.summary          = 'Flash GraphicEditKit 图文编辑'
 
 # This description is used to generate tags and improve search results.
@@ -56,4 +56,6 @@ Pod::Spec.new do |s|
   s.dependency 'JPImageresizerView', '~> 1.7.7'
   s.dependency 'GPUImage', '~> 0.1.7'
   s.dependency 'FlashPrinter'
+  s.dependency 'FlashHookKit'
+  s.dependency 'IQKeyboardManagerSwift', '~> 6.5.6'
 end

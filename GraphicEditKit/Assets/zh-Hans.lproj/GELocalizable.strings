@@ -20,6 +20,7 @@
 "ge.scale"="缩放";
 "ge.Double_click"="双击编辑文本内容";
 "ge.Are_you_sure"="是否确认退出";
+"ge.Are_you_sure_clear"="确定清除全部内容?";
 "ge.All_photos"="所有照片";
 "ge.edit_picture"="编辑图片";
 "ge.Printer_status"="打印机状态异常";

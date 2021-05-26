@@ -1,6 +1,6 @@
 {
   "name": "GraphicEditKit",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "summary": "Flash GraphicEditKit 图文编辑",
   "description": "GraphicEditKit 用来满足您的图片文字拼接的需要，快来试试吧！",
   "homepage": "https://github.com/MeiYuLong/GraphicEditKit.git",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MeiYuLong/GraphicEditKit.git",
-    "tag": "0.0.7"
+    "tag": "0.0.8"
   },
   "platforms": {
     "ios": "10.0"
@@ -49,6 +49,12 @@
     ],
     "FlashPrinter": [
 
+    ],
+    "FlashHookKit": [
+
+    ],
+    "IQKeyboardManagerSwift": [
+      "~> 6.5.6"
     ]
   },
   "swift_version": "5.0"

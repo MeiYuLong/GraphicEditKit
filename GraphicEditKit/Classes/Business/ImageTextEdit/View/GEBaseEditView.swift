@@ -376,28 +376,25 @@ extension GEBaseEditView {
     
     @objc func panRotateHandle(_ sender: UIPanGestureRecognizer) {
         let touchPoint:CGPoint = sender.location(in: self)
-        let superTouchPoint = sender.location(in: self.superview)
-        let centerPoint:CGPoint = self.center;
         let state = sender.state;
         switch state {
         case .began:
-            let yDistance = touchPoint.y - centerPoint.y;
-            let xDistance = touchPoint.x - centerPoint.x
+            let yDistance = touchPoint.y
+            let xDistance = touchPoint.x
             let radious =  atan2(yDistance, xDistance)
+            
             oldRadius = radious
             rotateRadius = 0
             break
         case .changed:
-            let yDistance = touchPoint.y - centerPoint.y;
-            let xDistance = touchPoint.x - centerPoint.x
+            let yDistance = touchPoint.y
+            let xDistance = touchPoint.x
             let radious =  atan2(yDistance, xDistance)
             let movedRadious = radious - oldRadius
-
-            if abs(centerPoint.x - superTouchPoint.x) < 50 && abs(centerPoint.y - superTouchPoint.y) < 50 {
-                return
-            }
+            if abs(rotateRadius + movedRadious) > 0.5 { break }
             rotateRadius += movedRadious
-            oldRadius = radious;
+            oldRadius = radious
+            debugPrint("movedRadious \(movedRadious)  rotateRadius \(rotateRadius)")
             self.transform = self.transform.rotated(by: rotateRadius)
             viewModel.rotate = rotateRadius
             break
@@ -449,6 +446,7 @@ extension GEBaseEditView {
         if sender.state == .began || sender.state == .changed {
             self.transform = self.transform.rotated(by: sender.rotation)
             viewModel.rotate = sender.rotation
+            debugPrint("\(sender.rotation)")
             sender.rotation = 0.0
         }
     }

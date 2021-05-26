@@ -1,0 +1,6 @@
+framework module FlashHookKit {
+  umbrella header "FlashHookKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
