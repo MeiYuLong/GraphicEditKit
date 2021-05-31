@@ -93,6 +93,7 @@ public class GEImageTextEditViewController: GEBaseViewController {
     public var addType: GEImageTextAddType?
     
     public override func viewDidLoad() {
+        IQKeyboardManager.shared.disabledToolbarClasses = [GEImageTextEditViewController.self]
         super.viewDidLoad()
         self.loadSubview()
         self.loadData()
@@ -134,17 +135,17 @@ public class GEImageTextEditViewController: GEBaseViewController {
         FHAnalysis.shared.logEvent(event: .imageTextEditing_B0001(image_text_print_time: second ?? 0))
     }
         
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
-    }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-    }
+//    public override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        IQKeyboardManager.shared.enable = false
+//        IQKeyboardManager.shared.enableAutoToolbar = false
+//    }
+//
+//    public override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enableAutoToolbar = true
+//    }
     
     func loadData() {
         toolTotalHeight = toolHeight + toolContentHeight
@@ -195,7 +196,7 @@ public class GEImageTextEditViewController: GEBaseViewController {
     
     @objc private func clearAllContent() {
         if hasContent() {
-            let alert = UIAlertController.init(title: "", message: "ge.Are_you_sure".GE_Locale, preferredStyle: .alert)
+            let alert = UIAlertController.init(title: "", message: "ge.Are_you_sure_clear".GE_Locale, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "ge.sure".GE_Locale, style: .default) { [weak self](_) in
                 self?.scrollTextView.text = ""
                 let _ = self?.scrollTextView.subviews.map{
