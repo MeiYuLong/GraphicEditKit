@@ -114,14 +114,13 @@ public class GEImageTextEditViewController: GEBaseViewController {
     override func ge_onLeftBarClick(_ sender: UIBarButtonItem) {
         UIApplication.shared.delegate?.window??.endEditing(true)
         if hasContent() {
-            let alert = UIAlertController.init(title: "", message: "ge.Are_you_sure".GE_Locale, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "ge.sure".GE_Locale, style: .default) { [weak self](_) in
+            let alert = GEAlertViewController.init(title: "ge.Are_you_sure".GE_Locale, message: "", style: .Text)
+            let action = GEAlertAction(title: "ge.cancel".GE_Locale, style: .cancel, handle: nil)
+            let confirmAction = GEAlertAction(title: "ge.sure".GE_Locale, style: .confirm) { [weak self](_) in
                 self?.buriedPointEvent()
                 self?.navigationController?.popViewController(animated: true)
             }
-            let cancelAction = UIAlertAction.init(title: "ge.cancel".GE_Locale, style: .cancel, handler: nil)
-            alert.addAction(action)
-            alert.addAction(cancelAction)
+            alert.actions = [action, confirmAction]
             self.present(alert, animated: true, completion: nil)
         }else {
             self.buriedPointEvent()
@@ -196,8 +195,9 @@ public class GEImageTextEditViewController: GEBaseViewController {
     
     @objc private func clearAllContent() {
         if hasContent() {
-            let alert = UIAlertController.init(title: "", message: "ge.Are_you_sure_clear".GE_Locale, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "ge.sure".GE_Locale, style: .default) { [weak self](_) in
+            let alert = GEAlertViewController.init(title: "ge.Are_you_sure_clear".GE_Locale, message: "", style: .Text)
+            let action = GEAlertAction(title: "ge.cancel".GE_Locale, style: .cancel, handle: nil)
+            let confirmAction = GEAlertAction(title: "ge.sure".GE_Locale, style: .delete) { [weak self](_) in
                 self?.scrollTextView.text = ""
                 let _ = self?.scrollTextView.subviews.map{
                     if $0 is GEBaseEditView {
@@ -205,10 +205,9 @@ public class GEImageTextEditViewController: GEBaseViewController {
                     }
                 }
             }
-            let cancelAction = UIAlertAction.init(title: "ge.cancel".GE_Locale, style: .cancel, handler: nil)
-            alert.addAction(action)
-            alert.addAction(cancelAction)
+            alert.actions = [action, confirmAction]
             self.present(alert, animated: true, completion: nil)
+            
         }
     }
     

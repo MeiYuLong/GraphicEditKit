@@ -155,6 +155,8 @@
 		45B398FF74B93C43249C5ED0D0D1867F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE04C6B1635D4561705D7EEB85AF6B0 /* Foundation.framework */; };
 		466F892BBC907A95F841A591C9529EE1 /* GPUImageSaturationBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = DC074A276F36143449ACAFE678C6E56E /* GPUImageSaturationBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4692DB633A45013DFD053142BAADD7FA /* GPUImageNonMaximumSuppressionFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 50D35831407E6D7EF3335A0D88EE7377 /* GPUImageNonMaximumSuppressionFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46BC34D926651CAD0079BEF7 /* GEAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BC34D826651CAD0079BEF7 /* GEAlertViewController.swift */; };
+		46BC34E926651D490079BEF7 /* GEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BC34E826651D490079BEF7 /* GEButton.swift */; };
 		46D1C468942F185868B70303313D2773 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE04C6B1635D4561705D7EEB85AF6B0 /* Foundation.framework */; };
 		472932A90291B2C952804655B3316767 /* ZYFilterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 58590DBD4D03935AD5813B73069821A0 /* ZYFilterTool.m */; };
 		48D42107D089BAF7625165E701885715 /* GPUImageLevelsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC98FB3106A68A4A653F62CEC1C218E /* GPUImageLevelsFilter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -906,6 +908,8 @@
 		45AFAB8A6DBD2442440E7F98F96BDE50 /* GPUImageThresholdedNonMaximumSuppressionFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageThresholdedNonMaximumSuppressionFilter.m; path = framework/Source/GPUImageThresholdedNonMaximumSuppressionFilter.m; sourceTree = "<group>"; };
 		46B75984D5135DBCFE09E97C898D0382 /* Pods-GraphicEditKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GraphicEditKit_Tests-Info.plist"; sourceTree = "<group>"; };
 		46BBB56958190F971E99046476283BA1 /* GPUImageHueBlendFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageHueBlendFilter.m; path = framework/Source/GPUImageHueBlendFilter.m; sourceTree = "<group>"; };
+		46BC34D826651CAD0079BEF7 /* GEAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEAlertViewController.swift; sourceTree = "<group>"; };
+		46BC34E826651D490079BEF7 /* GEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEButton.swift; sourceTree = "<group>"; };
 		46F346475CEC938E5D0EEDD9ACE5635B /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		476634B6C655046E5154E477138A9B10 /* GEToolBarLastItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GEToolBarLastItem.swift; sourceTree = "<group>"; };
 		48127C8612548482D64D8DB4F00BC6F3 /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTitleBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
@@ -1664,6 +1668,7 @@
 			children = (
 				62C68327CC9F320B27880FD06B08D950 /* GEPlaceHolderTextView.swift */,
 				DDB3A8955AC0506F1589BC10A0316921 /* GETextView.swift */,
+				46BC34E826651D490079BEF7 /* GEButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2361,6 +2366,7 @@
 			isa = PBXGroup;
 			children = (
 				3C869FC06168B6415F3EB0092A9381B3 /* GEBaseViewController.swift */,
+				46BC34D826651CAD0079BEF7 /* GEAlertViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3565,6 +3571,7 @@
 				9577C5C0B5EF743D169D5CBE6D2FC768 /* GEEditTagView.swift in Sources */,
 				6AF19DF85A97F0AC24CF5D015F6A1C49 /* GEImageCropManager.swift in Sources */,
 				FC7355ADA0A3BD31281814095CB9F533 /* GEImageCropViewController.swift in Sources */,
+				46BC34D926651CAD0079BEF7 /* GEAlertViewController.swift in Sources */,
 				73E4863CB41D28154DAD38BA268C04EB /* GEImageEditManager.swift in Sources */,
 				BF1C72E4AC45267A0D26C80345B3800A /* GEImageEditView.swift in Sources */,
 				1C629F06AA5D97C7BFE289091315C1B1 /* GEImageInfo.swift in Sources */,
@@ -3588,6 +3595,7 @@
 				268FEEFB92ED6E68B98E2CCF73E69BF5 /* GETextStyleEditManager.swift in Sources */,
 				80BD189CC19029BD6C9873124D102EAF /* GETextView.swift in Sources */,
 				DB2C9DFD3B662AB08D25082A7437B265 /* GEToolBar.swift in Sources */,
+				46BC34E926651D490079BEF7 /* GEButton.swift in Sources */,
 				EE92D5259B660C299CF0EE195402969C /* GEToolBarLastItem.swift in Sources */,
 				FCAC9C01B27F78376CF2CA260FB8A5ED /* GEUIButton+Extension.swift in Sources */,
 				D215C553F6F2B54EF1350723BED32321 /* GEUIColor+Extension.swift in Sources */,

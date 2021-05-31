@@ -24,8 +24,10 @@ let GEBGColor = UIColor.init(GE_R:247, GE_G: 248, GE_B:250)
 let GEShadowColor = UIColor.init(GE_R:0, GE_G: 0, GE_B:0)
 let GEEditingTextBGColor = UIColor.init(GE_R:198, GE_G: 216, GE_B:234)
 let GEBGAlphaColor = UIColor.init(GE_R:0, GE_G: 0, GE_B:0, alpha: 0.5)
+let GEBGAlphaColor3 = UIColor.init(GE_R:0, GE_G: 0, GE_B:0, alpha: 0.3)
 let GETOPLineColor = UIColor.init(GE_R:247, GE_G: 248, GE_B:250)
 let GETextPlaceholderColor = UIColor.init(GE_R: 220, GE_G: 222, GE_B: 224)
+let GEDeleteRedColor = UIColor.init(GE_R:255, GE_G: 68, GE_B:68)
 
 extension UIColor {
     
