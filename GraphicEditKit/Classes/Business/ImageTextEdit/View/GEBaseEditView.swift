@@ -394,7 +394,6 @@ extension GEBaseEditView {
             if abs(rotateRadius + movedRadious) > 0.5 { break }
             rotateRadius += movedRadious
             oldRadius = radious
-            debugPrint("movedRadious \(movedRadious)  rotateRadius \(rotateRadius)")
             self.transform = self.transform.rotated(by: rotateRadius)
             viewModel.rotate = rotateRadius
             break

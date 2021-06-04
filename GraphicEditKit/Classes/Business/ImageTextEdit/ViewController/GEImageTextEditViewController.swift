@@ -116,7 +116,7 @@ public class GEImageTextEditViewController: GEBaseViewController {
         if hasContent() {
             let alert = GEAlertViewController.init(title: "ge.Are_you_sure".GE_Locale, message: "", style: .Text)
             let action = GEAlertAction(title: "ge.cancel".GE_Locale, style: .cancel, handle: nil)
-            let confirmAction = GEAlertAction(title: "ge.sure".GE_Locale, style: .confirm) { [weak self](_) in
+            let confirmAction = GEAlertAction(title: "ge.quit".GE_Locale, style: .delete) { [weak self](_) in
                 self?.buriedPointEvent()
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -197,7 +197,7 @@ public class GEImageTextEditViewController: GEBaseViewController {
         if hasContent() {
             let alert = GEAlertViewController.init(title: "ge.Are_you_sure_clear".GE_Locale, message: "", style: .Text)
             let action = GEAlertAction(title: "ge.cancel".GE_Locale, style: .cancel, handle: nil)
-            let confirmAction = GEAlertAction(title: "ge.sure".GE_Locale, style: .delete) { [weak self](_) in
+            let confirmAction = GEAlertAction(title: "ge.clear".GE_Locale, style: .delete) { [weak self](_) in
                 self?.scrollTextView.text = ""
                 let _ = self?.scrollTextView.subviews.map{
                     if $0 is GEBaseEditView {

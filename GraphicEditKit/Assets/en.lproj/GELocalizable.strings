@@ -51,3 +51,5 @@
 "ge.quantity"="quantity";
 "ge.sure"="OK";
 "ge.cancel"="Cancel";
+"ge.quit"="Exit";
+"ge.clear"="Clear";
