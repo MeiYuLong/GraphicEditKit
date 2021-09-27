@@ -1,0 +1,39 @@
+/* 
+  PrintLocalizable.strings
+  Pods
+
+  Created by yulong mei on 2021/9/6.
+  
+*/
+"fp.print" = "In";
+"fp.cancel print" = "Hủy bỏ in";
+"fp.printing" = "Đang in...";
+"fp.print not connected" = "Máy in Bluetooth chưa được kết nối";
+"fp.connect now" = "Kết nối ngay";
+"fp.content device" = "Kết nối thiết bị";
+"fp.print done" = "Đã in xong";
+"fp.unknown error" = "Lỗi không rõ";
+"fp.Low battery" = "Pin thấp";
+"fp.Paper shortage" = "Hết giấy";
+"fp.Device is overheated" = "Qúa nhiệt";
+"fp.Device's cover is open" = "Mở nắp thiết bị";
+"fp.Bluetooth is on" = "Bluetooth đã được kích hoạt";
+"fp.Bluetooth is off" = "Bluetooth chưa được kích hoạt";
+"fp.Bluetooth version is not applicable" = "Bluetooth không hỗ trợ";
+"fp.Bluetooth is not authorized" = "Bluetooth chưa được ủy quyền";
+"fp.Your printer does not support" = "Nhà sản xuất của bạn không hỗ trợ Flash, vui lòng liên hệ với nhà sản xuất máy in của bạn để giải quyết. Flash khuyến nghị quý khách sử dụng FlashToy chính thức và vật tư tiêu hao, có thể mua tại trang chủ của APP Flash.";
+"fp.Bluetooth is disconnected abnormally" = "Bluetooth bị ngắt kết nối bất thường";
+"fp.Printer not found?" = "Không thể tìm thấy máy in? Vui lòng khởi động lại máy in và thử lại, nếu vẫn không tìm thấy được, vui lòng khởi động lại APP";
+"fp.Connect the printer" = "Chọn máy in";
+"fp.Searching for printers" = "Đang tìm kiếm thiết bị...";
+"fp.Connection successful" = "Kết nối thành công, đang in";
+"fp.Connection failed" = "Kết nối không thành công, vui lòng thử lại";
+"fp.copy" = "Tổng cộng * bản";
+"fp.Printing location" = "Đang in bản thứ *";
+"fp.Recevied data error" = "Việc xử lý dữ liệu nhận được bị lỗi, vui lòng liên hệ với chăm sóc khách hàng";
+"fp.Failed to enable Bluetooth service" = "Không mở được dịch vụ Bluetooth, vui lòng liên hệ với chăm sóc khách hàng";
+"fp.The printing device is disconnected" = "Thiết bị in bị ngắt kết nối";
+"fp.Bluetooth is resetting" = "Bluetooth đang được đặt lại";
+"fp.Bluetooth unknown error" = "Lỗi không rõ, vui lòng kiểm tra chức năng Bluetooth";
+"fp.Prompt" = "Nhắc nhở";
+"fp.ok" = "Xác nhận";

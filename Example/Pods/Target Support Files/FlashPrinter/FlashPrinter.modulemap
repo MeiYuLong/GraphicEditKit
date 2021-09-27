@@ -1,6 +1,0 @@
-framework module FlashPrinter {
-  umbrella header "FlashPrinter-umbrella.h"
-
-  export *
-  module * { export * }
-}

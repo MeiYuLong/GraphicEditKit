@@ -7,7 +7,7 @@
 
 import UIKit
 import MBProgressHUD
-import FlashPrinter
+import PrintKit
 import FlashHookKit
 
 /// 打印预览界面
