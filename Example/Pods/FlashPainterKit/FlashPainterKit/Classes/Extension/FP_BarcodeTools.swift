@@ -1,14 +1,14 @@
 //
-//  FD_BarcodeTools.swift
-//  MYL_Jewelry
+//  FP_BarcodeTools.swift
+//  FlashPainterKit
 //
-//  Created by yulong mei on 2021/3/10.
+//  Created by yulong mei on 2021/9/24.
 //
 
 import Foundation
 
 /// barcode使用的工具类
-struct BarcodeTools {
+struct FP_BarcodeTools {
     
     
     /// 将原始的pno进行加密

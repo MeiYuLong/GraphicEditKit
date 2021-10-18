@@ -8,9 +8,9 @@
 import Foundation
 
 extension String {
-    class NoUser {}
+    class FP_NoUser {}
     var FP_Locale: String {
-        guard let bundlePath = Bundle(for: NoUser.self).resourcePath else { return self }
+        guard let bundlePath = Bundle(for: FP_NoUser.self).resourcePath else { return self }
         guard let bundle = Bundle(path: bundlePath + "/PrintKit.bundle") else {
             return self
         }
@@ -26,7 +26,7 @@ extension String {
            let bundle1 = Bundle(path: bundlePath) {
             finalBundle = bundle1
         }
-        let content = NSLocalizedString(self, tableName: "PrintLocalizable", bundle: finalBundle, value: "", comment: "")
+        let content = NSLocalizedString(self, tableName: "Localizable", bundle: finalBundle, value: "", comment: "")
         return content
     }
     

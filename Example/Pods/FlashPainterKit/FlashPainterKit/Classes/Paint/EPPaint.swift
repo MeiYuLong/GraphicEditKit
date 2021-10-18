@@ -1,25 +1,27 @@
 //
-//  FlashDraw.swift
-//  MYL_Jewelry
+//  EPPaint.swift
+//  FlashPainterKit
 //
-//  Created by yulong mei on 2021/3/10.
+//  Created by yulong mei on 2021/9/24.
 //
 
 import Foundation
 
-internal class FlashDraw {
+internal class EPPaint {
     
-    static let shared = FlashDraw()
+    static let shared = EPPaint()
     
     var multiple:CGFloat = 1
     var barcodeHeight: CGFloat = 85
-    var dcNameWidth: CGFloat = 65
+    var dcNameWidth: CGFloat = 72
     var edge: CGFloat = 5
     var dcNameEdge: CGFloat = 7
     var barcodeFontSize:CGFloat = 26
     var dcNameFontSize: CGFloat = 22
     var namePhoneFontSize: CGFloat = 20
     var remarkFontSize: CGFloat = 20
+    
+    var fromToLabelMinHeight: CGFloat = 60
     
     var addressFontSize: CGFloat = 20
     var bgWidth = 380
@@ -41,32 +43,27 @@ internal class FlashDraw {
         bgView.frame = CGRect.init(x: 0, y: 0, width: bgSize.width, height: bgSize.height)
     }
     
-    /// 365Print绘制
-    public func draw365Label(data: FDLabelBaseData, _ bottomMargin: CGFloat) -> UIImage {
-        bgView.subviews.map{ $0.removeFromSuperview() }
+    /// 365Print绘制, edge: UIEdgeInsets = .zero)
+    public func draw365Label(type: EPPrinterType = .P2, data: FPLabelBaseData,  bottom: CGFloat) -> UIImage {
+        bgWidth = type.rawValue
+        bgSize = CGSize.init(width: bgWidth, height: bgHeight)
+        let _ = bgView.subviews.map{ $0.removeFromSuperview() }
+        bgView.frame = CGRect.init(x: 0, y: 0, width: bgSize.width, height: bgSize.height)
+        
+        x = 0
+        y = 0
         self.drawAddressInfo(data: data, type: .SRC)
         self.drawAddressInfo(data: data, type: .DST)
         self.drawRemark(data: data)
-        return self.drawImage()
+        return self.drawImage(bottom: bottom)
     }
-    
-    /// Flash PNO绘制
-    public func drawPNOLabel(data: FDTicketLabelData, _ bottomMargin: CGFloat = 0) -> UIImage {
-        bgView.subviews.map{ $0.removeFromSuperview() } 
-        self.drawCOD(data: data)
-        self.drawBarCode(data: data)
-        self.drawAddressInfo(data: data, type: .SRC)
-        self.drawAddressInfo(data: data, type: .DST)
-        self.drawRemark(data: data)
-        self.drawBottomLogo(image: nil, web: "Flashexpress.com")
-        return self.drawImage()
-    }
-    
-    private func drawImage(_ bottomMargin: CGFloat = 0) -> UIImage {
+
+    private func drawImage(bottom: CGFloat = 0) -> UIImage {
         //重新计算总高度
-        bgView.frame = CGRect.init(x: 0, y: 0, width: bgSize.width, height: y + bottomMargin)
+        bgView.frame = CGRect.init(x: 0, y: 0, width: bgSize.width, height: y + bottom)
         
         UIGraphicsBeginImageContext(bgView.bounds.size)
+//        UIGraphicsBeginImageContextWithOptions(bgView.bounds.size, true, 1.0)
         guard let context = UIGraphicsGetCurrentContext() else {
             return UIImage()
         }
@@ -76,24 +73,15 @@ internal class FlashDraw {
         UIGraphicsEndImageContext();//移除栈顶的基于当前位图的图形上下文
         return image ?? UIImage()
     }
-    
-    /// 地址信息枚举
-    enum FDAddressInfoType {
-        
-        /// 寄件
-        case SRC
-        /// 收件
-        case DST
-    }
-    
+
 }
 
 //MARK: FlashExpress绘制小标签(COD、BarCode、 寄件人信息、 收件人信息、 备注、 底部Logo)
-extension FlashDraw {
+extension EPPaint {
     
     /// 绘制COD
     /// - Parameter data: FDTicketLabelData
-    private func drawCOD(data: FDTicketLabelData) {
+    private func drawCOD(data: FPTicketLabelData) {
         let codEnable = data.cod_enabled
         let codAmount = data.cod_amount
         if codEnable == 1 && codAmount > 0 {
@@ -112,11 +100,11 @@ extension FlashDraw {
     
     /// 绘制条形码
     /// - Parameter data: FDTicketLabelData
-    private func drawBarCode(data: FDTicketLabelData) {
+    private func drawBarCode(data: FPTicketLabelData) {
         guard let meow_pno = data.meow_pno, !meow_pno.isEmpty else { return }
         let barcode = meow_pno
-        let newBarcode = BarcodeTools.secretPno(origin: barcode)
-        let barcodeImage = BarcodeTools.generateBarCode(IDCodeString: newBarcode)
+        let newBarcode = FP_BarcodeTools.secretPno(origin: barcode)
+        let barcodeImage = FP_BarcodeTools.generateBarCode(IDCodeString: newBarcode)
         let imageView = UIImageView.init(image: barcodeImage)
         imageView.frame = CGRect.init(x: 10, y: y, width: bgView.width-20, height: barcodeHeight)
         bgView.addSubview(imageView)
@@ -139,10 +127,10 @@ extension FlashDraw {
     
     /// 绘制寄件人信息
     /// - Parameter data: FDLabelBaseData
-    private func drawAddressInfo(data: FDLabelBaseData, type: FDAddressInfoType = .SRC) {
+    private func drawAddressInfo(data: FPLabelBaseData, type: FPAddressInfoType = .SRC) {
         
-        var srcTag = "From"
-        var dstTag = "To"
+        var srcTag = data.src_title
+        var dstTag = data.dst_title
         if let src_abbreviation = data.src_abbreviation, !src_abbreviation.isEmpty {
             srcTag = "\(srcTag)\n\(src_abbreviation)"
         }
@@ -172,9 +160,8 @@ extension FlashDraw {
         fromLabel.textColor = textColor
         fromLabel.numberOfLines = 2
         fromLabel.text = tagText
-        fromLabel.frame = CGRect.init(x: 0, y: line1.maxY + dcNameEdge + 2.5*multiple, width: dcNameWidth, height: 0)
+        fromLabel.frame = CGRect.init(x: 0, y: line1.maxY + dcNameEdge + 2.5*multiple, width: dcNameWidth, height: fromToLabelMinHeight)
         bgView.addSubview(fromLabel)
-        fromLabel.sizeToFit()
         x = (dcNameWidth - fromLabel.width)/2
         fromLabel.minX = x
         
@@ -239,12 +226,12 @@ extension FlashDraw {
         //line5  竖1
         let line5 = UIView()
         line5.backgroundColor = UIColor.black
-        line5.frame = CGRect.init(x: 2, y: line1.minY, width: 1, height: line4.maxY - line1.minY)
+        line5.frame = CGRect.init(x: 2, y: line1.maxY, width: 1, height: line4.minY - line1.maxY)
         bgView.addSubview(line5)
         //line6 竖3
         let line6 = UIView()
         line6.backgroundColor = UIColor.black
-        line6.frame = CGRect.init(x: bgView.width-2, y: line1.minY, width: line5.width, height: line5.height)
+        line6.frame = CGRect.init(x: line4.maxX - 1, y: line1.maxY, width: line5.width, height: line5.height)
         bgView.addSubview(line6)
         
         y = line6.maxY+edge
@@ -252,12 +239,12 @@ extension FlashDraw {
     
     /// 绘制备注区域
     /// - Parameter data: FDLabelBaseData
-    private func drawRemark(data: FDLabelBaseData) {
+    private func drawRemark(data: FPLabelBaseData) {
         guard let remark = data.remark, !remark.isEmpty  else { return }
         //remarkLine1 横一
         let remarkLine1 = UIView()
         remarkLine1.backgroundColor = UIColor.black
-        remarkLine1.frame = CGRect.init(x: 0, y: y + edge, width: bgSize.width-4, height: 1)
+        remarkLine1.frame = CGRect.init(x: 2, y: y, width: bgSize.width-4, height: 1)
         bgView.addSubview(remarkLine1)
         
         let remarkLabel = UILabel()
@@ -272,19 +259,19 @@ extension FlashDraw {
         //remarkLine1 横二
         let remarkLine2 = UIView()
         remarkLine2.backgroundColor = UIColor.black
-        remarkLine2.frame = CGRect.init(x: 0, y: remarkLabel.maxY + edge, width: bgSize.width-4, height: 1)
+        remarkLine2.frame = CGRect.init(x: 2, y: remarkLabel.maxY + edge, width: bgSize.width-4, height: 1)
         bgView.addSubview(remarkLine2)
         
         //remarkLine3  竖1
         let remarkLine3 = UIView()
         remarkLine3.backgroundColor = UIColor.black
-        remarkLine3.frame = CGRect.init(x: 0, y: remarkLine1.maxY, width: 1, height: remarkLine2.maxY - remarkLine1.minY)
+        remarkLine3.frame = CGRect.init(x: 2, y: remarkLine1.maxY, width: 1, height: remarkLine2.minY - remarkLine1.maxY)
         bgView.addSubview(remarkLine3)
         
         //remarkLine4 竖2
         let remarkLine4 = UIView()
         remarkLine4.backgroundColor = UIColor.black
-        remarkLine4.frame = CGRect.init(x: remarkLine1.maxX, y: remarkLine1.maxY, width: 1, height: remarkLine3.height)
+        remarkLine4.frame = CGRect.init(x: remarkLine1.maxX - 1, y: remarkLine1.maxY, width: 1, height: remarkLine3.height)
         bgView.addSubview(remarkLine4)
         
         y = remarkLine2.maxY

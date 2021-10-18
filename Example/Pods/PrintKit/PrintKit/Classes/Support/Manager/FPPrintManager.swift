@@ -79,9 +79,7 @@ public class FPPrintManager{
             guard let self = self else { return }
             switch status {
             case .PRINTER_READY:
-                guard let image = self.printImage else {
-                    return
-                }
+                guard let image = self.printImage else { return }
                 service.fpPrint(image)
                 break
             case .PRINTER_PRINTING,
@@ -93,7 +91,7 @@ public class FPPrintManager{
                  .PRINTER_PRINT_VERSION_ERROR,
                  .PRINTER_CONNECT_FAILD,
                  .PRINTER_GATTSERVICE_FAILD:
-                self.showAlert(status.error)
+                self.showErrorAlert(status.error)
                 break
             case .PRINTER_PRINT_MAC:
                 // 获取到MAC地址表示已经连接并且开启服务成功
@@ -152,9 +150,11 @@ extension FPPrintManager {
 }
 
 extension FPPrintManager {
-    public func showAlert(_ message: String) {
+    public func showErrorAlert(_ message: String) {
         let alert = UIAlertController.init(title: "fp.Prompt".FP_Locale, message: message, preferredStyle: .alert)
-        let action = UIAlertAction.init(title: "fp.ok".FP_Locale, style: .default, handler: nil)
+        let action = UIAlertAction.init(title: "fp.ok".FP_Locale, style: .default) { [weak self](action) in
+            self?.hidden()
+        }
         alert.addAction(action)
         window?.rootViewController?.present(alert, animated: true, completion: nil)
     }

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double MYL_JewelryVersionNumber;
-FOUNDATION_EXPORT const unsigned char MYL_JewelryVersionString[];
+FOUNDATION_EXPORT double FlashPainterKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char FlashPainterKitVersionString[];
 

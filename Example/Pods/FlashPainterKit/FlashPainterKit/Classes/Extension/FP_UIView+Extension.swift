@@ -1,8 +1,8 @@
 //
-//  Draw_UIView+FrameExtension.swift
-//  MYL_Jewelry
+//  FP_UIView+Extension.swift
+//  FlashPainterKit
 //
-//  Created by yulong mei on 2021/3/10.
+//  Created by yulong mei on 2021/9/24.
 //
 
 import Foundation

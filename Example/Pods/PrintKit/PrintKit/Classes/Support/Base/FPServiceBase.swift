@@ -36,7 +36,7 @@ class FPServiceBase: NSObject, FPPrintProtocol, FPServiceProtocol {
     var printHandler: FPPrintHandler?
     
     /// 连接的设备
-    public var connectedPeripheral: CBPeripheral?
+    public var connectedPeripheral: FPPeripheral?
     
     /// 是否连接
     public var isConnected: Bool{

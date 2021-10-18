@@ -8,41 +8,39 @@
 import Foundation
 import CoreBluetooth
 
-/// 支持的打印机类型：Alison、...
-enum FPPrinterType {
+/// 支持的打印机厂商：Alison、365、...
+enum FPPrinterVendor {
     case Alison
     case EPrint
     case Unknown
-    // ...
-    
-    init(name: String) {
-        for support in FPPeripheralName.allCases {
-            if name.contains(support.rawValue) {
-                self = support.type
-                return
-            }
-        }
-        self = .Unknown
-    }
 }
 
-/// 支持的所有打印机名字
-enum FPPeripheralName: String, CaseIterable {
+/// 支持的所有打印机类型
+enum FPPeripheralType: String, CaseIterable {
     case alison = "Alison" 
     case flashToy = "FlashToy"
     case periPage = "PeriPage"
-    case ePrint = "365Print"
+    case ePrintP3 = "365Print-P3"
+    case ePrintP2 = "365Print-P2"
+    case unknown
     
-    /// 当前打印机所对应的SDK类型
-    var type: FPPrinterType {
+    /// 当前打印机所对应的SDK厂商
+    var vendor: FPPrinterVendor {
         switch self {
-        case .alison, .flashToy, .periPage:
+        case .alison,
+             .flashToy,
+             .periPage:
             return .Alison
-        case .ePrint:
+        case .ePrintP3,
+             .ePrintP2:
             return .EPrint
         default:
             return .Unknown
         }
+    }
+    
+    init(name: String) {
+        self = FPPeripheralType.allCases.filter{name.contains($0.rawValue)}.first ?? .unknown
     }
 }
 
@@ -56,5 +54,5 @@ public struct FPPeripheral {
     var cbPeripheral: CBPeripheral
     
     /// 设备类型
-    var type: FPPrinterType = .Unknown
+    var type: FPPeripheralType = .unknown
 }

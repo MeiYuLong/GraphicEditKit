@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C46D97B202FA2F36871924D1601B4CEE"
-               BuildableName = "MYL_Jewelry.framework"
-               BlueprintName = "MYL_Jewelry"
+               BlueprintIdentifier = "8F4B12BC03A141547CE007B59C89361D"
+               BuildableName = "FlashPainterKit.framework"
+               BlueprintName = "FlashPainterKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

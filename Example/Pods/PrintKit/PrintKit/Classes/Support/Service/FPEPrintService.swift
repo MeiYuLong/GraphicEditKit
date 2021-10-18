@@ -53,12 +53,27 @@ class FPEPrintService: FPServiceBase {
     }
     
     override func fpPrint(_ data: Any) {
-        guard let image = data as? UIImage else { return }
-        print(image: image)
+        guard let image = data as? UIImage, let peripheral = self.connectedPeripheral else { return }
+        switch peripheral.type {
+        case .ePrintP2:
+            printP2(image: image)
+        case .ePrintP3:
+            printP3(image: image)
+        default:
+            break
+        }
     }
     
     override func fpStopPrintJob() {
-        stopPrint()
+        guard let peripheral = self.connectedPeripheral else { return }
+        switch peripheral.type {
+        case .ePrintP2:
+            stopPrintP2()
+        case .ePrintP3:
+            stopPrintP3()
+        default:
+            break
+        }
     }
     #endif
 }
@@ -66,12 +81,11 @@ class FPEPrintService: FPServiceBase {
 // MARK: Action
 #if !(arch(x86_64) || arch(i386))
 extension FPEPrintService {
-    /// 打印数据
+    /// 打印数据P3
     /// - Parameter image: 数据图片
-    private func print(image: UIImage) {
+    private func printP3(image: UIImage) {
         DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            guard let printer = self.printer else { return }
+            guard let self = self, let printer = self.printer else { return }
             printer.pageSetup(576, pageHeight: Int32(image.size.height))
             printer.drawGraphic(withLabel: 0, start_y: 0, bmp_size_x: Int32(image.size.width), bmp_size_y: Int32(image.size.height), img: image)
             printer.print(0, skip: 0)
@@ -79,11 +93,34 @@ extension FPEPrintService {
         }
     }
     
-    private func stopPrint() {
+    private func stopPrintP3() {
         DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            guard let printer = self.printer else { return }
+            guard let self = self, let printer = self.printer else { return }
             printer.print(0, skip: 0)
+        }
+    }
+    
+    /// 打印数据P2
+    /// - Parameter image: 数据图片
+    private func printP2(image: UIImage) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self, let printer = self.printer else { return }
+            printer.write(withBytes: printer.enableP2())
+            var sendData = Data.init()
+            sendData.append(printer.printerWakeP2())
+            sendData.append(printer.printLinedotsP2(10))
+            sendData.append(printer.drawGraphicP2(image))
+            sendData.append(printer.printLinedotsP2(70))
+            printer.write(withBytes: sendData)
+            printer.write(withBytes: printer.stopPrintJobP2())
+            self.printerStatusMonitor?(.PRINTER_PRINT_OK)
+        }
+    }
+    
+    private func stopPrintP2() {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self, let printer = self.printer else { return }
+            printer.write(withBytes: printer.stopPrintJobP2())
         }
     }
     
@@ -101,28 +138,79 @@ extension FPEPrintService {
     
     private func disconnect() {
         if let peripheral = self.connectedPeripheral {
-            printer?.disconnect(peripheral)
+            printer?.disconnect(peripheral.cbPeripheral)
             connectedPeripheral = nil
         }
         printer?.stopService()
         printerStatusMonitor?(.PRINTRT_DISCONNECT)
     }
     
+    private func didconnect() {
+        guard let peripheral = self.connectedPeripheral else { return }
+        switch peripheral.type {
+        case .ePrintP2:
+            self.printerStatusMonitor?(.PRINTER_PRINT_MAC)
+            // 连接成功后自动打印
+            self.checkPrinterStatus()
+        case .ePrintP3:
+            printer?.getBTInf(0x04)
+        default:
+            break
+        }
+    }
+    
     private func checkPrinterStatus() {
-        printer?.getStatus()
+        guard let peripheral = self.connectedPeripheral,
+              let printer = self.printer else { return }
+        switch peripheral.type {
+        case .ePrintP2:
+            printer.write(withBytes: printer.printerStatusP2())
+        case .ePrintP3:
+            printer.getStatus()
+        default:
+            break
+        }
     }
     
     /// 部署MAC地址
     /// - Parameter result: MacAddrss
     private func deployMacAddress(_ macAddrss: String) {
-        guard let connect = self.connectedPeripheral else { return }
-        let peripheral = FPPeripheral(mac: macAddrss, cbPeripheral: connect, type: .Alison)
-        FPCentralManager.shared.currentPeripheral = peripheral
-        
+        self.connectedPeripheral?.mac = macAddrss
         self.printerStatusMonitor?(.PRINTER_PRINT_MAC)
         
         // 连接成功后自动打印
         self.checkPrinterStatus()
+    }
+    
+    /// 解析打印机状态
+    private func analysisState(_ state: printerStatus) {
+        switch state.rawValue {
+        case 0:
+            printerStatusMonitor?(.PRINTER_OPENED)
+        case 1:
+            printerStatusMonitor?(.PRINTER_NO_PAPER)
+        case 2:
+            printerStatusMonitor?(.PRINTER_OVERHEAT)
+        case 3:
+            printerStatusMonitor?(.PRINTER_PRINTING)
+        case 4:
+            printerStatusMonitor?(.PRINTER_LOW_BATTERY)
+        case 5:
+            printerStatusMonitor?(.PRINTER_READY)
+        default:
+            printerStatusMonitor?(.PRINTER_ERROR)
+        }
+    }
+    
+    private func analysisStateP2(_ state: printerStatus) {
+//        let statusStr =  FPPrintTool.revDataCheckStatus(data: bleData)
+//        let status = FPPrinterStatus.init(rawValue: statusStr)
+//        self.printerStatusMonitor?(status ?? .PRINTER_PRINT_UNKNOW)
+        debugPrint("bleDataReceived---PrinterStatus--- P2-- \(state)")
+    }
+    
+    private func analysisStateP3(_ state: printerStatus) {
+        debugPrint("bleDataReceived---PrinterStatus--- P3-- \(state)")
     }
 }
 
@@ -133,8 +221,10 @@ extension FPEPrintService: PrinterInterfaceDelegate {
     }
     
     func bleDidConnect(_ peripheral: CBPeripheral) {
-        connectedPeripheral = peripheral
-        printer?.getBTInf(0x06)
+        guard let name = peripheral.name else { return }
+        let peripheralType = FPPeripheralType(name: name)
+        connectedPeripheral = FPPeripheral(mac: "", cbPeripheral: peripheral, type: peripheralType)
+        didconnect()
     }
     
     func bleDidFail(toConnect peripheral: CBPeripheral, error: Error?) {
@@ -142,7 +232,7 @@ extension FPEPrintService: PrinterInterfaceDelegate {
     }
     
     func bleDidDisconnectPeripheral(_ peripheral: CBPeripheral, error: Error?) {
-        printer?.stopService()
+        disconnect()
     }
     
     func bleGattService(_ bleGattService: BLEGATTService, didStart result: Bool) {
@@ -159,22 +249,8 @@ extension FPEPrintService: PrinterInterfaceDelegate {
     }
     
     func blePrinterStatus(_ status: printerStatus) {
-        switch status.rawValue {
-        case 0:
-            printerStatusMonitor?(.PRINTER_OPENED)
-        case 1:
-            printerStatusMonitor?(.PRINTER_NO_PAPER)
-        case 2:
-            printerStatusMonitor?(.PRINTER_OVERHEAT)
-        case 3:
-            printerStatusMonitor?(.PRINTER_PRINTING)
-        case 4:
-            printerStatusMonitor?(.PRINTER_LOW_BATTERY)
-        case 5:
-            printerStatusMonitor?(.PRINTER_READY)
-        default:
-            printerStatusMonitor?(.PRINTER_ERROR)
-        }
+        analysisState(status)
+        debugPrint("blePrinterStatus---PrinterStatus \(status)")
     }
 
     func bleDidFinishPrint(_ state: printResult) {

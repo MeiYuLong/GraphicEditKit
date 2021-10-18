@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9DD0371C73E0DC78AC440AFFED426977"
-               BuildableName = "MYL_Jewelry.bundle"
-               BlueprintName = "MYL_Jewelry-MYL_Jewelry"
+               BlueprintIdentifier = "F0B7416763F55476A73ACB864BFC74DC"
+               BuildableName = "FlashPainterKit.bundle"
+               BlueprintName = "FlashPainterKit-FlashPainterKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

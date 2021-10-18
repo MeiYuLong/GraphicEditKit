@@ -9,7 +9,11 @@ import Foundation
 import CoreBluetooth
 import UIKit
 
-// PrintKit里面不兼容Alison
+/*
+ PrintKit里面不兼容Alison
+ FPCentralManager 负责设备搜索、链接，解析识别多个SDK，调用对应的Service，开启服务、结束服务；
+ 需要将SDK的扫描统一管理,每个SDK扫描的设备不能通用，所以需要所有的打印机SDK来扫描，依据选择的设置来判断使用哪个SDK服务；
+ */
 class FPCentralManager: FPServiceProtocol {
     
     static let shared = FPCentralManager()
@@ -17,7 +21,7 @@ class FPCentralManager: FPServiceProtocol {
     /// 当前打印机的服务SDK
     var service: FPServiceBase? {
         get {
-            switch type {
+            switch selectedPeripheral?.type.vendor {
             case .EPrint:
                 return ePrintService
             default:
@@ -27,29 +31,30 @@ class FPCentralManager: FPServiceProtocol {
     }
     
     /// 当前PrinterSDK类型
-    var type: FPPrinterType = .Unknown
+    var vendor: FPPrinterVendor = .Unknown
     
     /// Alison SDK
-//    private var alisonService = FPAlisonService()
+    //private var alisonService = FPAlisonService()
     
     /// 365Print （SLWPrint SDK）
     private var ePrintService = FPEPrintService()
     
-    var currentPeripheral: FPPeripheral?
+    /// 当前Printer
+    var selectedPeripheral: FPPeripheral?
     
-    /// 需要将SDK的扫描统一管理,每个SDK扫描的设备不能通用，所以需要所有的打印机SDK来扫描，依据选择的设置来判断使用哪个SDK服务；
     public func scan() {
-//        alisonService.fpScan()
+        //alisonService.fpScan()
         ePrintService.fpScan()
     }
     
     public func stopScan() {
-//        alisonService.fpStopScan()
+        //alisonService.fpStopScan()
         ePrintService.fpStopScan()
     }
     
     public func connect(peripheral: FPPeripheral) {
-        type = peripheral.type
+        selectedPeripheral = peripheral
+        stopScan()
         service?.fpConnect(peripheral.cbPeripheral)
     }
 }
@@ -59,16 +64,16 @@ extension FPCentralManager {
     
     func start() {
         // 需要提前将SDK初始化，因为CBCentralManager需要先去检测蓝牙状态才能扫描设备
-//        alisonService.start()
+        //alisonService.start()
         ePrintService.start()
     }
     
     func stop() {
-//        alisonService.stop()
+        //alisonService.stop()
         ePrintService.stop()
         
-        type = .Unknown
-        currentPeripheral = nil
+        vendor = .Unknown
+        selectedPeripheral = nil
     }
 }
 
